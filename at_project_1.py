@@ -59,10 +59,14 @@ def in_degree_distribution(digraph):
     """
     indeg = compute_in_degrees(digraph)
     result = {}
+    sum_indegrees = 0
     for val in indeg.itervalues():
         if val not in result:
             result[val] = 0
         result[val] += 1
+        sum_indegrees += 1
+    for val in result.iterkeys():
+        result[val] = result[val] / float(sum_indegrees)
     return result
 
-
+in_degree_distribution(citation_graph)
